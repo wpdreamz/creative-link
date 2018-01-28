@@ -1,0 +1,8 @@
+.vc_creative_link {
+	background-image:url(link-icon.png)!important;;
+}
+.creative_link .wpb_element_wrapper {
+	background-image: url(link-icon.png)!important;
+	background-repeat: no-repeat;
+	background-position: left;
+}
