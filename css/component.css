@@ -188,6 +188,7 @@
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
+	white-space: nowrap;
 }
 
 .cl-effect-5 a:hover span,
@@ -334,6 +335,7 @@
 
 /* Effect 9: second text and borders */
 .cl-effect-9 a {
+	display: inline-block;
 	margin: 0 20px;
 	padding: 18px 20px;
 	position: relative;
@@ -783,6 +785,7 @@
 	color: #10649b;
 	text-shadow: none;
 	padding: 10px 0;
+	display: inline-block;
 }
 
 .cl-effect-17 a::before {
