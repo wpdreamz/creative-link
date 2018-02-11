@@ -785,6 +785,7 @@
 	color: #10649b;
 	text-shadow: none;
 	padding: 10px 0;
+	display: inline-block;
 }
 
 .cl-effect-17 a::before {
