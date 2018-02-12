@@ -416,9 +416,10 @@
 }
 
 /* Effect 10: reveal, push out */
-/*.cl-effect-10  {
+.cl-effect-10  {
 	position: relative;
 	z-index: 1;
+	display: inline-block;
 }
 
 .cl-effect-10 a {
@@ -427,7 +428,7 @@
 }
 
 .cl-effect-10 a span {
-	display: block;
+	display: inline-block;
 	padding: 10px 20px;
 	background: #0f7c67;
 	-webkit-transition: -webkit-transform 0.3s;
@@ -464,11 +465,12 @@
 	-webkit-transform: translateX(0%);
 	-moz-transform: translateX(0%);
 	transform: translateX(0%);
-}*/
+}
 
-.cl-effect-10 {
+/*.cl-effect-10 {
     position: relative;
-    z-index: 1
+    z-index: 1;
+    display: inline-block;
 }
 .cl-effect-10 a {
     overflow: hidden;
@@ -523,7 +525,7 @@
     transform: translateX(0);
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
-}
+}*/
 
 /* Effect 11: text fill based on Lea Verou's animation http://dabblet.com/gist/6046779 */
 .cl-effect-11 {

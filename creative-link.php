@@ -208,7 +208,7 @@ if(!class_exists('VC_Creative_link'))
 						background: '.esc_attr( $background_hover_color ).';
 					}
 					</style>';
-					$output .= '<div class="creative_link '.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="float:'.esc_attr($text_style).';'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'><span class="style-2-back" data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div>';
+					$output = '<div class="creative_link " style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div></div>';
 					return $output;
 				break;
 				case 'cl-effect-11':
