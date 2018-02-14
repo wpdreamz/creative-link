@@ -56,7 +56,9 @@ if(!class_exists('VC_Creative_link'))
 				'text_style'		 =>'center',
 				'box_shadow_type'	 =>'inset',
 				'shadow_color'		 =>'#587285',
-				'shadow_size'		 =>'1',	
+				'shadow_size'		 =>'1',
+				'line_border_size'	 =>'2',
+				'line_border_color'	 =>'#cccccc',	
 			),$atts));
 
 			$href=$target=$text=$url= $alt_text= $rel = "";
@@ -144,7 +146,25 @@ if(!class_exists('VC_Creative_link'))
 					return $output;
 				break;
 				case 'cl-effect-6':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+				$output = '';
+				if('2' !== $line_border_size || '#cccccc' != $line_border_color){
+					$output = '
+					<style>
+						.cl-effect-6 a::before {
+							// width: 100%;
+							// height: '.esc_attr( $line_border_size ).'px !important;
+							background: '.esc_attr( $line_border_color ).' !important;
+						}
+
+						.cl-effect-6 a::after {
+							// width: '.esc_attr( $line_border_size ).'px !important;
+							// height: '.esc_attr( $line_border_size ).'px !important;
+							background: '.esc_attr( $line_border_color ).' !important;
+						}
+					</style>
+					';
+				}
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
 					return $output;
@@ -181,14 +201,18 @@ if(!class_exists('VC_Creative_link'))
 					return $output;
 				break;
 				case 'cl-effect-10':
-					$output ='<style>
-					.cl-effect-10 a:hover span::before, 
-					.cl-effect-10 a:focus span::before,
-					.cl-effect-10 a span::before {
+
+					$rand = rand();
+					$output = '<style>
+					.creative_link_'.$rand.' .cl-effect-10 a::before {
 						background: '.esc_attr( $background_hover_color ).';
 					}
+					.creative_link_'.$rand.' .cl-effect-10 a span {
+						'.esc_attr( $back_style ).';
+					}
 					</style>';
-					$output .= '<div class="creative_link '.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="float:'.esc_attr($text_style).';'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'><span class="style-2-back" data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div>';
+
+					$output .= '<div class="creative_link creative_link_'.$rand.' " style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" >'.esc_attr( $title ).'</span></a></div></div>';
 					return $output;
 				break;
 				case 'cl-effect-11':
@@ -366,13 +390,13 @@ if(!class_exists('VC_Creative_link'))
 
 							),
 							array(
-									"type" => "ult_param_heading",
-									"param_name" => "button1bg_settng",
-									"text" => __("Color Settings", "creative-link"),
-									"value" => "",
-									"class" => "",
-									'edit_field_class' => 'ult-param-heading-wrapper vc_column vc_col-sm-12',
-								),
+								"type" => "ult_param_heading",
+								"param_name" => "button1bg_settng",
+								"text" => __("Color Settings", "creative-link"),
+								"value" => "",
+								"class" => "",
+								'edit_field_class' => 'ult-param-heading-wrapper vc_column vc_col-sm-12',
+							),
 							array(
 								"type" => "colorpicker",
 								"class" => "",
@@ -380,7 +404,6 @@ if(!class_exists('VC_Creative_link'))
 								"param_name" => "text_color",
 								"value" => "#333333",
 								"description" => __("Select text color for Link.", "creative-link"),
-
 							),
 							array(
 								"type" => "colorpicker",
@@ -455,7 +478,6 @@ if(!class_exists('VC_Creative_link'))
 								"description" => __("Select box shadow color for link.", "creative-link"),
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
 								"dependency" => Array("element" => "box_shadow_type", "value" => array("inset","outset")),
-
 							),
 							array(
 								"type" => "number",
@@ -518,6 +540,33 @@ if(!class_exists('VC_Creative_link'))
 								"dependency" => Array("element"=>"link_hover_style","value" => array("cl-effect-13")),
 							),
 							array(
+								"type" => "number",
+								"class" => "",
+								"heading" => __("Border Line Width", "creative-link"),
+								"param_name" => "line_border_size",
+								"value" => 2,
+								"min" => 1,
+								"max" => 10,
+								"suffix" => "px",
+								"description" => __("Thickness of the border line.", "creative-link"),
+								//"dependency" => Array("element" => "border_style", "not_empty" => true),
+								"dependency" => Array(
+									"element"=>"link_hover_style","value" => array("cl-effect-6"),
+												)
+							),
+							array(
+							"type" => "colorpicker",
+							"class" => "",
+							"heading" => __("Border Line Color", "creative-link"),
+							"param_name" => "line_border_color",
+							"value" => "#cccccc",
+							"description" => __("Select border line color for link.", "creative-link"),
+							//"dependency" => Array("element" => "border_style", "not_empty" => true),
+							"dependency" => Array(
+								"element"=>"link_hover_style","value" => array("cl-effect-6"),
+											)
+							),
+							array(
 								"type" => "dropdown",
 								"class" => "",
 								"heading" => __("Link Alignment", "creative-link"),
@@ -531,21 +580,6 @@ if(!class_exists('VC_Creative_link'))
 								"description" => __("Select the text align for link.","creative-link"),
 								//"group" => "Typography ",
 							),
-							// array(
-							// 	"type" => "textfield",
-							// 	"class" => "",
-							// 	"heading" => __("Custom CSS Class", "creative-link"),
-							// 	"param_name" => "el_class",
-							// 	"value" => "",
-							// 	"description" => __("Ran out of options? Need more styles? Write your own CSS and mention the class name here.", "creative-link"),
-							// ),
-							// array(
-					  //           'type' => 'css_editor',
-					  //           'heading' => __( 'Css', 'creative-link' ),
-					  //           'param_name' => 'css',
-					  //           'group' => __( 'Design ', 'creative-link' ),
-					  //           'edit_field_class' => 'vc_col-sm-12 vc_column no-vc-background no-vc-border creative_link_css_editor',
-					  //       ),
 						) // end params array
 					) // end vc_map array
 				); // end vc_map
