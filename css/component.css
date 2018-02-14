@@ -1067,7 +1067,7 @@
 	left: 0;
 	width: 100%;
 	height: 2px;
-	background: #fff;
+	background: #ccc;
 	content: '';
 	opacity: 0;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;

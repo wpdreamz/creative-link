@@ -274,7 +274,20 @@ if(!class_exists('VC_Creative_link'))
 					return $output;
 				break;
 				case 'cl-effect-21':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+				$output = '';
+				if('2' !== $line_border_size || '#cccccc' != $line_border_color){
+					$output .= '
+					<style>
+						.cl-effect-21 a::before,
+						.cl-effect-21 a::after {
+							width: 100%;
+							height: '.esc_attr( $line_border_size ).'px;
+							background: '.esc_attr( $line_border_color ).';
+						}
+					</style>
+					';
+				}
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
 					return $output;
@@ -451,7 +464,7 @@ if(!class_exists('VC_Creative_link'))
 
 								),
 								"description" => __("Select the border style for link.","creative-link"),
-								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-3","cl-effect-4","cl-effect-7","cl-effect-8","cl-effect-9","cl-effect-11","cl-effect-14","cl-effect-17","cl-effect-18","cl-effect-21")),
+								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-3","cl-effect-4","cl-effect-7","cl-effect-8","cl-effect-9","cl-effect-11","cl-effect-14","cl-effect-17","cl-effect-18")),
 
 							),
 							array(
@@ -551,7 +564,7 @@ if(!class_exists('VC_Creative_link'))
 								"description" => __("Thickness of the border line.", "creative-link"),
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
 								"dependency" => Array(
-									"element"=>"link_hover_style","value" => array("cl-effect-6"),
+									"element"=>"link_hover_style","value" => array("cl-effect-6","cl-effect-21"),
 												)
 							),
 							array(
@@ -563,7 +576,7 @@ if(!class_exists('VC_Creative_link'))
 							"description" => __("Select border line color for link.", "creative-link"),
 							//"dependency" => Array("element" => "border_style", "not_empty" => true),
 							"dependency" => Array(
-								"element"=>"link_hover_style","value" => array("cl-effect-6"),
+								"element"=>"link_hover_style","value" => array("cl-effect-6","cl-effect-21"),
 											)
 							),
 							array(
