@@ -201,14 +201,18 @@ if(!class_exists('VC_Creative_link'))
 					return $output;
 				break;
 				case 'cl-effect-10':
-					$output ='<style>
-					.cl-effect-10 a:hover span::before, 
-					.cl-effect-10 a:focus span::before,
-					.cl-effect-10 a span::before {
+
+					$rand = rand();
+					$output = '<style>
+					.creative_link_'.$rand.' .cl-effect-10 a::before {
 						background: '.esc_attr( $background_hover_color ).';
 					}
+					.creative_link_'.$rand.' .cl-effect-10 a span {
+						'.esc_attr( $back_style ).';
+					}
 					</style>';
-					$output = '<div class="creative_link " style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div></div>';
+
+					$output .= '<div class="creative_link creative_link_'.$rand.' " style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" >'.esc_attr( $title ).'</span></a></div></div>';
 					return $output;
 				break;
 				case 'cl-effect-11':
