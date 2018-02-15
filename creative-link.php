@@ -146,25 +146,25 @@ if(!class_exists('VC_Creative_link'))
 					return $output;
 				break;
 				case 'cl-effect-6':
-				$output = '';
-				if('2' !== $line_border_size || '#cccccc' != $line_border_color){
-					$output = '
-					<style>
-						.cl-effect-6 a::before {
-							// width: 100%;
-							// height: '.esc_attr( $line_border_size ).'px !important;
-							background: '.esc_attr( $line_border_color ).' !important;
-						}
+					$output = '';
+					$rand = rand();
+					if('2' !== $line_border_size || '#cccccc' != $line_border_color){
+						$output = '<style>
+							.creative_link_'.$rand.' .cl-effect-6 a::before {
+								width: 100%;
+								height: '.esc_attr( $line_border_size ).'px ;
+								background: '.esc_attr( $line_border_color ).' ;
+							}
 
-						.cl-effect-6 a::after {
-							// width: '.esc_attr( $line_border_size ).'px !important;
-							// height: '.esc_attr( $line_border_size ).'px !important;
-							background: '.esc_attr( $line_border_color ).' !important;
-						}
-					</style>
-					';
-				}
-					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+							.creative_link_'.$rand.' .cl-effect-6 a::after {
+								width: '.esc_attr( $line_border_size ).'px ;
+								height: '.esc_attr( $line_border_size ).'px ;
+								background: '.esc_attr( $line_border_color ).' ;
+							}
+						</style>
+						';
+					}
+					$output .= '<div class="creative_link creative_link_'.$rand.'" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
 					return $output;
