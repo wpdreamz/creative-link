@@ -96,7 +96,7 @@ jQuery(document).ready(function(){
 	jQuery('.creative_link').hover(function() {
 
       var shadowcolor = jQuery(this).find('.creative-link-13-link-bottom').data('color');
-      jQuery( this ).find('.creative-link-13-link-bottom').css("display",'inline-block');
+      jQuery( this ).find('.creative-link-13-link-bottom').css("display",'block');
      	jQuery( this ).find('.creative-link-13-link-bottom').css("text-shadow","10px 0 "+shadowcolor+", -10px 0 "+shadowcolor);
       	jQuery( this ).find('.creative-link-13-link-bottom').css("color",shadowcolor);
       }, function(){
