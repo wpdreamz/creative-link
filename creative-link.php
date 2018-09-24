@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Creative links for WPBakery Page Builder
-Plugin URI: https://www.xyz.com
+Plugin URI: https://www.nextleveldevs.com
 Description: A plugin to create atractive and effevtive links.
-Author: Uttam
-Author URI: https://www.xyz.com
-Version: 1.0.0
+Author: NextLevelDevs
+Author URI: https://www.nextleveldevs.com
+Version: 0.0.1
 Text Domain: creative-link
 */
 if(!class_exists('VC_Creative_link'))
