@@ -80,7 +80,7 @@ if(!class_exists('VC_Creative_link'))
 
 			// Text alignment
 			$text_alignment = "";
-			$text_alignment  .= ($text_style !== '') ? ' float:'.$text_style.';' : '';
+			// $text_alignment  .= ($text_style !== '') ? ' float:'.$text_style.';' : '';
 
 			$style  = ($text_color !== '') ? ' color:'.$text_color.';' : ' ';
 			
@@ -103,107 +103,87 @@ if(!class_exists('VC_Creative_link'))
 				$data_link_19 .= 'background:'.esc_attr($background_hover_color);
 			}
 
+			$output = '<div class="vc-module-content vc-cl-wrap"><div class="vc-cl-div">';
 			switch ( $link_hover_style ) {
 				case 'cl-effect-1':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a></div></div>';
-					return $output;
+					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><div class="vc-cl-heading"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a></div></div>';
 				break;
 				case 'cl-effect-2':
-					// $output ='<style>
-					// .csstransforms3d .cl-effect-2 a:hover span::before, 
-					// .csstransforms3d .cl-effect-2 a:focus span::before,
-					// .csstransforms3d .cl-effect-2 a span::before {
-					// 	background: '.esc_attr( $background_hover_color ).';
-					// }
-					// </style>';
-					$output = '<div class="creative_link csstransforms3d" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'><span class="style-2-back" data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div></div>';
-					return $output;
+					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><div class="vc-cl-heading"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'><span class="style-2-back" data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div></div>';
 				break;
 				case 'cl-effect-3':
 					$data_border = $borderstyle = $after ='';
-					$data_border .='border-color:'.$border_color.';';
+					$data_border .='border-bottom-color:'.$border_color.';';
 					$data_border .='border-bottom-width:'.$border_size.'px;';
-					$data_border .='border-style:'.$border_style.';';
+					$data_border .='border-bottom-style:'.$border_style.';';
 					$borderstyle .=$data_border; //text color for btm border
 					$after .='<span class="creative-link-btm3" style="'.esc_attr($borderstyle).'"></span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><div class="vc-cl-heading"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-4':
 					$data_border = $borderstyle = $after ='';
-					$data_border .='border-color:'.$border_color.';';
+					$data_border .='border-bottom-color:'.$border_color.';';
 					$data_border .='border-bottom-width:'.$border_size.'px;';
-					$data_border .='border-style:'.$border_style.';';
+					$data_border .='border-bottom-style:'.$border_style.';';
 					$borderstyle .=$data_border; //text color for btm border
 					$after .='<span class="creative-link-btm4" style="'.esc_attr($borderstyle).'"></span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-5':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
-					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'><span data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</span></a>
-				</div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
+						<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'><span data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</span></a>
+						</div></div>';
 				break;
 				case 'cl-effect-6':
-					$output = '';
 					$rand = rand();
 					if('2' !== $line_border_size || '#cccccc' != $line_border_color){
-						$output = '<style>
+						$output .= '<style>
 							.creative_link_'.$rand.' .cl-effect-6 a::before {
 								width: 100%;
 								height: '.esc_attr( $line_border_size ).'px ;
 								background: '.esc_attr( $line_border_color ).' ;
 							}
-
 							.creative_link_'.$rand.' .cl-effect-6 a::after {
 								width: '.esc_attr( $line_border_size ).'px ;
-								height: '.esc_attr( $line_border_size ).'px ;
 								background: '.esc_attr( $line_border_color ).' ;
 							}
 						</style>
 						';
 					}
-					$output .= '<div class="creative_link creative_link_'.$rand.'" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link creative_link_'.$rand.'" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-7':
 					$data_border = $borderstyle = $before = $after ='';
-					$data_border .='border-color:'.$border_color.';';
+					$data_border .='border-bottom-color:'.$border_color.';';
 					$data_border .='border-bottom-width:'.$border_size.'px;';
-					$data_border .='border-style:'.$border_style.';';
+					$data_border .='border-bottom-style:'.$border_style.';';
 					$borderstyle .=$data_border; //text color for btm border
 					$before ='<span class="creative-link-7-top" style="'.esc_attr($borderstyle).'"></span>';
 					$after .='<span class="creative-link-7-bottom" style="'.esc_attr($borderstyle).'"></span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-8':
 					$borderhover = $borderstyle = $before = $after ='';
 					$borderstyle .='outline-color:'.$border_color.';';
 					$borderstyle .='outline-width:'.$border_size.'px;';
 					$borderstyle .='outline-style:'.$border_style.';'; //text color for btm border
-
 					$borderhover .='outline-color:'.$border_hovercolor.';';
 					$borderhover .='outline-width:'.$border_size.'px;';
 					$borderhover .='outline-style:'.$border_style.';'; //text color for btm border
 					$before ='<span class="creative-link-8-top" style="'.esc_attr($borderstyle).'"></span>';
 					$after .='<span class="creative-link-8-bottom" style="'.esc_attr($borderhover).'"></span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-9':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
-					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).'><span>'.esc_attr( $title ).'</span><span>'.esc_attr( $tag_line ).'</span></a>
-				</div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
+						<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).'><span>'.esc_attr( $title ).'</span><span>'.esc_attr( $tag_line ).'</span></a>
+					</div></div>';
 				break;
 				case 'cl-effect-10':
-
 					$rand = rand();
-					$output = '<style>
+					$output .= '<style>
 					.creative_link_'.$rand.' .cl-effect-10 a::before {
 						background: '.esc_attr( $background_hover_color ).';
 					}
@@ -211,45 +191,42 @@ if(!class_exists('VC_Creative_link'))
 						'.esc_attr( $back_style ).';
 					}
 					</style>';
-
-					$output .= '<div class="creative_link creative_link_'.$rand.' " style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" >'.esc_attr( $title ).'</span></a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link creative_link_'.$rand.' " style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).' data-hover="'.esc_attr( $title ).'"><span class="style-2-back" >'.esc_attr( $title ).'</span></a></div></div>';
 				break;
 				case 'cl-effect-11':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
-					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
-				</div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
+						<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
+					</div></div>';
+				break;
+				case 'cl-effect-12':
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
+						<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
+					</div></div>';
 				break;
 				case 'cl-effect-13':
 					$after ='';
 					$after .='<span class="creative-link-13-link-bottom" data-color="'.esc_attr($dot_color).'">•</span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-14':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-15':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-16':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-17':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).' data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-18':
 					$borderstyle = $before = $after ='';
@@ -258,20 +235,17 @@ if(!class_exists('VC_Creative_link'))
 					$borderstyle .= 'border-top-color:'.$border_color.';';
 					$before ='<span class="creative-link-18-top" style="'.esc_attr($borderstyle).'"></span>';
 					$after .='<span class="creative-link-18-bottom" style="'.esc_attr($borderstyle).'"></span>';
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
-					return $output;
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.$before.''.esc_attr( $title ).''.$after.'</a></div></div>';
 				break;
 				case 'cl-effect-19':
-					$output = '<div class="creative_link csstransforms3d" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link csstransforms3d" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'><span data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $data_link_19 ).'" >'.esc_attr( $title ).'</span></a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-20':
-					$output = '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link ).'><span data-hover="'.esc_attr( $title ).'">'.esc_attr( $title ).'</span></a>
 				</div></div>';
-					return $output;
 				break;
 				case 'cl-effect-21':
 				$output = '';
@@ -287,12 +261,13 @@ if(!class_exists('VC_Creative_link'))
 					</style>
 					';
 				}
-					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="'.esc_attr( $link_hover_style ).'">
+					$output .= '<div class="creative_link" style="'.esc_attr( $text_alignment ).'"><div class="vc-creative-link '.esc_attr( $link_hover_style ).'">
 					<a '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' style="'.esc_attr( $style ).'" '.esc_attr( $data_link_5 ).'>'.esc_attr( $title ).'</a>
 				</div></div>';
-					return $output;
 				break;
 			}
+			$output .= '</div></div>';
+			return $output;
 	 	 	
 		}
 		// Link validation.
@@ -445,7 +420,8 @@ if(!class_exists('VC_Creative_link'))
 								"param_name" => "background_hover_color",
 								"value" => "",
 								"description" => __("Select background hover color for link.", "creative-link"),
-								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-2","cl-effect-10","cl-effect-19","cl-effect-20","Style_11")),
+								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-2","cl-effect-10","cl-effect-19","cl-effect-20","Style_11")
+								),
 
 							),
 							array(
@@ -464,8 +440,8 @@ if(!class_exists('VC_Creative_link'))
 
 								),
 								"description" => __("Select the border style for link.","creative-link"),
-								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-3","cl-effect-4","cl-effect-7","cl-effect-8","cl-effect-9","cl-effect-11","cl-effect-14","cl-effect-17","cl-effect-18")),
-
+								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-3","cl-effect-4","cl-effect-7","cl-effect-8","cl-effect-9","cl-effect-11","cl-effect-14","cl-effect-17","cl-effect-18")
+								),
 							),
 							array(
 								"type" => "dropdown",
@@ -479,8 +455,8 @@ if(!class_exists('VC_Creative_link'))
 
 								),
 								"description" => __("Select the box shadow type for link.","creative-link"),
-								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-20")),
-
+								"dependency" => Array("element" => "link_hover_style","value" => array("cl-effect-20")
+								),
 							),
 							array(
 								"type" => "colorpicker",
@@ -490,7 +466,8 @@ if(!class_exists('VC_Creative_link'))
 								"value" => "#587285",
 								"description" => __("Select box shadow color for link.", "creative-link"),
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
-								"dependency" => Array("element" => "box_shadow_type", "value" => array("inset","outset")),
+								"dependency" => Array("element" => "box_shadow_type", "value" => array("inset","outset")
+								),
 							),
 							array(
 								"type" => "number",
@@ -503,8 +480,8 @@ if(!class_exists('VC_Creative_link'))
 								"suffix" => "px",
 								"description" => __("Thickness of the Shadow.", "creative-link"),
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
-								"dependency" => Array("element" => "box_shadow_type", "value" => array("inset","outset")),
-
+								"dependency" => Array("element" => "box_shadow_type", "value" => array("inset","outset")
+								),
 							),
 							array(
 								"type" => "colorpicker",
@@ -526,8 +503,8 @@ if(!class_exists('VC_Creative_link'))
 								"description" => __("Select border hover color for link.", "creative-link"),
 								"dependency" => Array(
 									"element"=>"link_hover_style","value" => array("cl-effect-8","cl-effect-11"),
-									/*"element" => "border_style",  "not_empty" => true*/ ),
-
+									/*"element" => "border_style",  "not_empty" => true*/ 
+								),
 							),
 							array(
 								"type" => "number",
@@ -540,8 +517,8 @@ if(!class_exists('VC_Creative_link'))
 								"suffix" => "px",
 								"description" => __("Thickness of the border.", "creative-link"),
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
-								"dependency" => Array("element" => "border_style", "value" => array("solid","dashed","dotted","double","inset","outset")),
-
+								"dependency" => Array("element" => "border_style", "value" => array("solid","dashed","dotted","double","inset","outset")
+								),
 							),
 							array(
 								"type" => "colorpicker",
@@ -565,7 +542,7 @@ if(!class_exists('VC_Creative_link'))
 								//"dependency" => Array("element" => "border_style", "not_empty" => true),
 								"dependency" => Array(
 									"element"=>"link_hover_style","value" => array("cl-effect-6","cl-effect-21"),
-												)
+								)
 							),
 							array(
 							"type" => "colorpicker",
@@ -577,7 +554,7 @@ if(!class_exists('VC_Creative_link'))
 							//"dependency" => Array("element" => "border_style", "not_empty" => true),
 							"dependency" => Array(
 								"element"=>"link_hover_style","value" => array("cl-effect-6","cl-effect-21"),
-											)
+								)
 							),
 							array(
 								"type" => "dropdown",
@@ -604,6 +581,3 @@ if(class_exists('VC_Creative_link'))
 {
 	$VC_Creative_link = new VC_Creative_link;
 }
-
-
-
