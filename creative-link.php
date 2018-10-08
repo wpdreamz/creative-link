@@ -80,7 +80,7 @@ if(!class_exists('VC_Creative_link'))
 
 			// Text alignment
 			$text_alignment = "";
-			// $text_alignment  .= ($text_style !== '') ? ' float:'.$text_style.';' : '';
+			 $text_alignment  .= ($text_style !== '') ? ' text-align:'.$text_style.';' : '';
 
 			$style  = ($text_color !== '') ? ' color:'.$text_color.';' : ' ';
 			
@@ -91,7 +91,7 @@ if(!class_exists('VC_Creative_link'))
 			$data_link .= ' data-texthover='.esc_attr($text_hovercolor);
 			$data_link .= ' data-back-color='.esc_attr($background_color).'';
 			$data_link .= ' data-back-hover='.esc_attr($background_hover_color).'';
-
+			$data_link_5 = '';
 			if('cl-effect-5' == $link_hover_style || 'cl-effect-9' == $link_hover_style || 'cl-effect-11' == $link_hover_style || 'cl-effect-14' == $link_hover_style || 'cl-effect-15' == $link_hover_style || 'cl-effect-16' == $link_hover_style || 'cl-effect-17' == $link_hover_style || 'cl-effect-21' == $link_hover_style){
 				$data_link_5 = '';
 				$data_link_5 .= 'data-textcolor='.esc_attr($text_color);
@@ -106,7 +106,7 @@ if(!class_exists('VC_Creative_link'))
 			$output = '<div class="vc-module-content vc-cl-wrap"><div class="vc-cl-div">';
 			switch ( $link_hover_style ) {
 				case 'cl-effect-1':
-					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><div class="vc-cl-heading"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a></div></div>';
+					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).'"><div class="vc-cl-heading" style="'.esc_attr( $text_alignment ).'"><a style="'.esc_attr($style).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'>'.esc_attr( $title ).'</a></div></div>';
 				break;
 				case 'cl-effect-2':
 					$output .= '<div class="vc-creative-link '.esc_attr( $link_hover_style ).' style="'.esc_attr( $style ).'"><div class="vc-cl-heading"><a style="'.esc_attr( $style ).'" '.$this->vc_creative_link_checker($url, $target, $alt_text, $rel ).' '.esc_attr( $data_link ).'><span class="style-2-back" data-hover="'.esc_attr( $title ).'" style="'.esc_attr( $back_style ).'">'.esc_attr( $title ).'</span></a></div></div>';
